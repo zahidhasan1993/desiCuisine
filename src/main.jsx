@@ -2,9 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
+import { RouterProvider } from 'react-router-dom'
+import PublicRoutes from './Components/Routers/PublicRoutes.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={PublicRoutes}></RouterProvider>
   </React.StrictMode>,
 )
