@@ -19,7 +19,7 @@ const ChefsRecipe = () => {
 
 
   useEffect(() => {
-    fetch(`http://desicuisine-zahidhasan1993.vercel.app/recipes/${cuisine_item_id}`)
+    fetch(`https://desicuisine-zahidhasan1993.vercel.app/recipes/${cuisine_item_id}`)
     .then(res => res.json())
     .then(data => setRecipes(data))
   }, []);

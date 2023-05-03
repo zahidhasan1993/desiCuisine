@@ -1,9 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { DataProvider } from "../providers/AuthProvider";
 
 const Navbar = () => {
-  const user = null;
+  const [hover, setHover] = useState(false);
+  const {logOut,user} = useContext(DataProvider);
+  // console.log(user.photoURL);
+  const onHover = () =>{
+    setHover(!hover)
+  }
+
+  
+  // console.log(hover);
 
   return (
     <div className="navbar bg-base-100">
@@ -72,17 +80,21 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
+      {hover && <p className="mr-4">{user.displayName}</p>}
         {user ? (
           <div className="avatar">
             <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+              <img src={user.photoURL} onMouseEnter={onHover} onMouseLeave={onHover}/>
+              
             </div>
+            <button className="btn bg-red-700 hover:bg-red-600 ml-4">LogOut</button>
           </div>
         ) : (
           <Link to="/login" className="btn bg-red-700 hover:bg-red-600">
             Login
           </Link>
         )}
+        
       </div>
     </div>
   );

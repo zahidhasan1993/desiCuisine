@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaGoogle, FaGithub } from "react-icons/fa";
+import { DataProvider } from "../providers/AuthProvider";
 
 const Register = () => {
+  const { googleLogin } = useContext(DataProvider);
+  const [err, setErr] = useState(null);
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        // console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+        setErr(error.message);
+      });
+  };
+
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col">
@@ -54,15 +69,19 @@ const Register = () => {
                 placeholder="password"
                 className="input input-bordered"
               />
-              
             </div>
             <div className="form-control mt-6">
               <button className="btn btn-primary">Register</button>
             </div>
           </form>
-          <h1 className="text-2xl underline text-center mb-5">Register With </h1>
+          <h1 className="text-2xl underline text-center mb-5">
+            Register With{" "}
+          </h1>
           <div className="text-center mb-4">
-            <button className="btn btn-outline w-[75%] text-red-700">
+            <button
+              onClick={handleGoogleLogin}
+              className="btn btn-outline w-[75%] text-red-700"
+            >
               <FaGoogle className="mr-4 "></FaGoogle>Register with Google
             </button>
             <button className="btn btn-outline w-[75%] mt-4">

@@ -17,7 +17,7 @@ const PublicRoutes = createBrowserRouter([
             {
                 path : "/",
                 element : <Home></Home>,
-                loader : () => fetch('http://desicuisine-zahidhasan1993.vercel.app/chefs')
+                loader : () => fetch('https://desicuisine-zahidhasan1993.vercel.app/chefs')
             },
             {
                 path : "blog",
@@ -34,7 +34,7 @@ const PublicRoutes = createBrowserRouter([
             {
                 path : "chefsRecipes/:id",
                 element : <ChefsRecipe></ChefsRecipe>,
-                loader : ({params}) => fetch(`http://desicuisine-zahidhasan1993.vercel.app/chefs/${params.id}`)
+                loader : ({params}) => fetch(`https://desicuisine-zahidhasan1993.vercel.app/chefs/${params.id}`)
 
             }
         ]

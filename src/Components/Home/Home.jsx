@@ -6,7 +6,7 @@ import ChefsCard from './ChefsCard';
 
 const Home = () => {
     const chefs = useLoaderData();
-    console.log(chefs);
+    // console.log(chefs);
     return (
         <div>
             <Header></Header>
