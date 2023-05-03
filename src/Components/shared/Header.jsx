@@ -1,48 +1,20 @@
-import React, { useRef, useState } from "react";
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-import pic1 from "../../assets/1.jpg"
-import pic2 from "../../assets/2.jpg"
-import pic3 from "../../assets/3.jpg"
+import React from 'react';
+import Slider from '../extra/Slider';
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
-
-
-// import required modules
-import { EffectCoverflow, Pagination } from "swiper";
-
-export default function App() {
+const Header = () => {
   return (
-    <div className="mt-8">
-      <Swiper
-        effect={"coverflow"}
-        grabCursor={true}
-        centeredSlides={true}
-        slidesPerView={"auto"}
-        coverflowEffect={{
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: true,
-        }}
-        pagination={true}
-        modules={[EffectCoverflow, Pagination]}
-        className="mySwiper"
-      >
-        <SwiperSlide>
-          <img className="w-96 h-52 md:w-[100%] md:h-[35rem] rounded-lg" src={pic1} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img className="w-96 h-52 md:w-[100%] md:h-[35rem] rounded-lg" src={pic2} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img className="w-96 h-52 md:w-[100%] md:h-[35rem] rounded-lg" src={pic3} />
-        </SwiperSlide>
-      </Swiper>
+    <div className='md:grid md:grid-cols-3 md:gap-8 justify-center items-center'>
+      <div className='mt-9'>
+        <h1 className='text-3xl'><span className='text-5xl font-bold'>Welcome</span> the food world of <span className='text-5xl font-bold text-red-700'>Bangladesh</span></h1>
+
+        <p className='text-gray-600 mt-8'>Bangladeshi cuisine is a rich and diverse culinary tradition that has been shaped by its geography, history, and cultural influences. Located in South Asia, Bangladesh shares borders with India and Myanmar, and has a long coastline along the Bay of Bengal. This has resulted in a cuisine that features a wide variety of flavors, spices, and ingredients, including rice, fish, meat, vegetables, and lentils.</p>
+
+      </div>
+      <div className='col-span-2'>
+        <Slider></Slider>
+      </div>
     </div>
   );
-}
+};
+
+export default Header;

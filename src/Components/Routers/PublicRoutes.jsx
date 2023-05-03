@@ -4,6 +4,8 @@ import Home from '../Home/Home';
 import Layout from '../shared/Layout';
 import Blog from '../extra/Blog';
 import ErrorPage from '../Error/ErrorPage';
+import Login from '../login/Login';
+import Register from '../login/Register';
 
 const PublicRoutes = createBrowserRouter([
     {
@@ -12,7 +14,7 @@ const PublicRoutes = createBrowserRouter([
         errorElement : <ErrorPage></ErrorPage>,
         children : [
             {
-                path : "home",
+                path : "/",
                 element : <Home></Home>
             },
             {
@@ -20,7 +22,12 @@ const PublicRoutes = createBrowserRouter([
                 element : <Blog></Blog>
             },
             {
-
+                path : "login",
+                element : <Login></Login>
+            },
+            {
+                path : "register",
+                element : <Register></Register>
             }
         ]
     }

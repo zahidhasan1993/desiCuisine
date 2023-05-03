@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { DataProvider } from "../providers/AuthProvider";
 
 const Navbar = () => {
+  const user = null;
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -29,7 +32,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 className={({ isActive }) => (isActive ? "text-red-700" : "")}
-                to="/home"
+                to="/"
               >
                 Home
               </NavLink>
@@ -44,7 +47,7 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost normal-case text-xl">
+        <Link to="/" className="btn btn-ghost normal-case font-bold text-2xl">
           Desi<span className="text-red-700">CuiSine</span>
         </Link>
       </div>
@@ -53,7 +56,7 @@ const Navbar = () => {
           <li>
             <NavLink
               className={({ isActive }) => (isActive ? "text-red-700" : "")}
-              to="/home"
+              to="/"
             >
               Home
             </NavLink>
@@ -69,7 +72,17 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link className="btn bg-red-700 hover:bg-red-600">Login</Link>
+        {user ? (
+          <div className="avatar">
+            <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+              <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+            </div>
+          </div>
+        ) : (
+          <Link to="/login" className="btn bg-red-700 hover:bg-red-600">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );
