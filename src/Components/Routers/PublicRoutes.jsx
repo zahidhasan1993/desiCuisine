@@ -6,6 +6,7 @@ import Blog from '../extra/Blog';
 import ErrorPage from '../Error/ErrorPage';
 import Login from '../login/Login';
 import Register from '../login/Register';
+import ChefsRecipe from '../ChefsRecipe/ChefsRecipe';
 
 const PublicRoutes = createBrowserRouter([
     {
@@ -29,6 +30,12 @@ const PublicRoutes = createBrowserRouter([
             {
                 path : "register",
                 element : <Register></Register>
+            },
+            {
+                path : "chefsRecipes/:id",
+                element : <ChefsRecipe></ChefsRecipe>,
+                loader : ({params}) => fetch(`http://localhost:5000/chefs/${params.id}`)
+
             }
         ]
     }

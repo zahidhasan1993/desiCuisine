@@ -1,8 +1,10 @@
 import React from "react";
 import { HiThumbUp } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 const ChefsCard = ({ data }) => {
-  const { experience, likes, name, number_of_recipe, picture } = data;
+  const { cuisine_item_id
+    ,experience, likes, name, number_of_recipe, picture,id } = data;
   return (
     <div className="card w-[100%] bg-base-100 shadow-md mb-10">
       <figure>
@@ -21,7 +23,7 @@ const ChefsCard = ({ data }) => {
             <span className="text-red-700 mt-2 ml-2"> {likes}</span>
         </div>
         <div className="card-actions justify-end">
-          <button className="btn btn-error  text-white">View Recipes</button>
+          <Link to={`/chefsRecipes/${id}`} className="btn btn-error  text-white">View Recipes</Link>
         </div>
       </div>
     </div>
