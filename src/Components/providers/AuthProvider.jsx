@@ -17,6 +17,7 @@ const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState([]);
+  const [loader,setLoader] = useState(true);
 
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
@@ -25,6 +26,7 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log(currentUser);
       setUser(currentUser);
+      setLoader(false)
     });
 
     return () => {
@@ -33,20 +35,25 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   const googleLogin = () => {
+    setLoader(true)
     return signInWithPopup(auth, googleProvider);
   };
 
   const githubLogin = () => {
+    setLoader(true)
     return signInWithPopup(auth, githubProvider);
   };
   const emailSignUp = (email,password) => {
+    setLoader(true)
     return createUserWithEmailAndPassword(auth,email,password);
   };
   const emailLogin = (email,password) => {
+    setLoader(true)
       return signInWithEmailAndPassword(auth,email,password);
   };
 
   const logOut = () => {
+    setLoader(true)
     return signOut(auth);
   };
 
@@ -56,7 +63,8 @@ const AuthProvider = ({ children }) => {
     user,
     githubLogin,
     emailSignUp,
-    emailLogin
+    emailLogin,
+    loader
   };
   return (
     <DataProvider.Provider value={functions}>{children}</DataProvider.Provider>

@@ -1,12 +1,19 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle,FaGithub } from 'react-icons/fa';
 import { DataProvider } from "../providers/AuthProvider";
 
 
 const Login = () => {
   const {emailLogin,googleLogin,githubLogin} = useContext(DataProvider);
-  const [err,setErr] = useState(null)
+  const [err,setErr] = useState(null);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
+  // console.log(location);
+
   const handleEmailLogin = (e) => {
     e.preventDefault();
 
@@ -17,6 +24,8 @@ const Login = () => {
     emailLogin(email,password)
     .then(result => {
       form.reset();
+      navigate(from, {replace: true});
+      
     })
     .catch(error => {
       setErr(error.message);
@@ -28,7 +37,7 @@ const Login = () => {
   const handleGoogleLogin = () => {
     googleLogin()
     .then(result => {
-
+      navigate(from, {replace: true});
     })
     .catch(error => {
       setErr(error.message)
@@ -37,7 +46,7 @@ const Login = () => {
   const handleGitLogin = () => {
     githubLogin()
     .then(result => {
-
+      navigate(from, {replace: true});
     })
     .catch(error => {
       setErr(error.message)

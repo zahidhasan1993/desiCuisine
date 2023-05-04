@@ -3,10 +3,15 @@ import Header from '../shared/Header';
 import { DataProvider } from '../providers/AuthProvider';
 import { useLoaderData } from 'react-router-dom';
 import ChefsCard from './ChefsCard';
+import SomeRecipes from '../extra/SomeRecipes';
 
 const Home = () => {
+    const {loader} = useContext(DataProvider);
     const chefs = useLoaderData();
     // console.log(chefs);
+    if (loader) {   
+        return <button className="btn loading md:mt-28 md:ml-[45rem]">loading</button>
+    }
     return (
         <div>
             <Header></Header>
@@ -17,6 +22,8 @@ const Home = () => {
                     chefs.map(chef => <ChefsCard key={chef.id} data={chef}></ChefsCard>)
                 }
             </div>
+            <h1 className='text-5xl underline text-center text-red-700 my-20'>Some Recipes Of Our Chef's</h1>
+            <SomeRecipes></SomeRecipes>
         </div>
     );
 };
