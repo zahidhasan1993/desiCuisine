@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { HiThumbUp } from "react-icons/hi";
 import ChefRecipeCard from "./ChefRecipeCard";
+import { DataProvider } from "../providers/AuthProvider";
 
 const ChefsRecipe = () => {
+  const {loader} = useContext(DataProvider);
   const data = useLoaderData();
   const [recipes,setRecipes] = useState([]);
   const {
@@ -25,7 +27,9 @@ const ChefsRecipe = () => {
   }, []);
 
 //   console.log(data);
-
+  if(loader){
+    return <button className="btn loading md:mt-28 md:ml-[45rem]">loading</button>
+  }
   
   // console.log(data);
   return (
