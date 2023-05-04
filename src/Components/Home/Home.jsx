@@ -25,7 +25,7 @@ const Home = () => {
             </div>
             <h1 className='text-5xl underline text-center text-red-700 my-20'>Some Recipes Of Our Chef's</h1>
             <SomeRecipes></SomeRecipes>
-            <h1 className='text-5xl underline text-center text-red-700 my-20'>Some Recipes Of Our Chef's</h1>
+            <h1 className='text-5xl underline text-center text-red-700 my-20'>Give Us Feedback</h1>
             <Feedback></Feedback>
         </div>
     );

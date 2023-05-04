@@ -22,7 +22,7 @@ const SomeRecipes = () => {
     return (
         <div className='md:flex md:gap-6'>
             {
-                recipes.map(recipe => <ViewRecipes key={recipe.id} data={recipe}></ViewRecipes>)
+                recipes.map(recipe => <ViewRecipes key={recipe.key} data={recipe}></ViewRecipes>)
             }
         </div>
     );

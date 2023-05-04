@@ -4,7 +4,7 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 import { DataProvider } from "../providers/AuthProvider";
 
 const Register = () => {
-  const { googleLogin,githubLogin,emailSignUp } = useContext(DataProvider);
+  const { googleLogin,githubLogin,emailSignUp,UpdateUser } = useContext(DataProvider);
   const [err, setErr] = useState(null);
   const navigate = useNavigate();
   const handleGoogleLogin = () => {
@@ -50,6 +50,9 @@ const Register = () => {
 
       emailSignUp(email,password)
       .then(result => {
+        UpdateUser(result.user,name,photo)
+        .then(result => {})
+        .catch(error => {})
         form.reset();
         navigate('/')
         
