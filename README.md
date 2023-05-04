@@ -6,3 +6,6 @@ key features of the app :
 
 * banner changing button when user log in and log out
 * hover on user image show you user name
+
+* page is fully responsive
+* One Click pdf Download to blog page
