@@ -4,6 +4,7 @@ import { DataProvider } from '../providers/AuthProvider';
 import { useLoaderData } from 'react-router-dom';
 import ChefsCard from './ChefsCard';
 import SomeRecipes from '../extra/SomeRecipes';
+import Feedback from '../extra/Feedback';
 
 const Home = () => {
     const {loader} = useContext(DataProvider);
@@ -24,6 +25,8 @@ const Home = () => {
             </div>
             <h1 className='text-5xl underline text-center text-red-700 my-20'>Some Recipes Of Our Chef's</h1>
             <SomeRecipes></SomeRecipes>
+            <h1 className='text-5xl underline text-center text-red-700 my-20'>Some Recipes Of Our Chef's</h1>
+            <Feedback></Feedback>
         </div>
     );
 };
