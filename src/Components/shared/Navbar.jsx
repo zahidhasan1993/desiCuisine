@@ -9,12 +9,20 @@ const Navbar = () => {
   const onHover = () =>{
     setHover(!hover)
   }
+  const handleLogOut = () => {
+    logOut()
+    .then(result => {
 
-  
+    })
+    .catch(error => {
+      
+    })
+  }
+
   // console.log(hover);
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 my-6">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -83,11 +91,11 @@ const Navbar = () => {
       {hover && <p className="mr-4">{user.displayName}</p>}
         {user ? (
           <div className="avatar">
-            <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+            <div className="w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
               <img src={user.photoURL} onMouseEnter={onHover} onMouseLeave={onHover}/>
               
             </div>
-            <button className="btn bg-red-700 hover:bg-red-600 ml-4">LogOut</button>
+            <button onClick={handleLogOut} className="btn bg-red-700 hover:bg-red-600 ml-4">LogOut</button>
           </div>
         ) : (
           <Link to="/login" className="btn bg-red-700 hover:bg-red-600">

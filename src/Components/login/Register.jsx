@@ -4,7 +4,7 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 import { DataProvider } from "../providers/AuthProvider";
 
 const Register = () => {
-  const { googleLogin } = useContext(DataProvider);
+  const { googleLogin,githubLogin } = useContext(DataProvider);
   const [err, setErr] = useState(null);
 
   const handleGoogleLogin = () => {
@@ -17,6 +17,16 @@ const Register = () => {
         setErr(error.message);
       });
   };
+
+  const handleGithubLogin = () => {
+    githubLogin()
+    .then(result => {
+      console.log(result);
+    })
+    .catch(error => {
+      console.log(error.message);
+    })
+  }
 
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -84,7 +94,7 @@ const Register = () => {
             >
               <FaGoogle className="mr-4 "></FaGoogle>Register with Google
             </button>
-            <button className="btn btn-outline w-[75%] mt-4">
+            <button onClick={handleGithubLogin} className="btn btn-outline w-[75%] mt-4">
               <FaGithub className="mr-4"></FaGithub>Register with Github
             </button>
             <p className="mt-5">

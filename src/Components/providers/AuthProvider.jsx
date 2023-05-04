@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import {
+  GithubAuthProvider,
   GoogleAuthProvider,
   getAuth,
   onAuthStateChanged,
@@ -16,6 +17,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState([]);
 
   const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -32,6 +34,10 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
+  const githubLogin = () => {
+    return signInWithPopup(auth, githubProvider);
+  };
+
   const logOut = () => {
     return signOut(auth);
   };
@@ -40,6 +46,7 @@ const AuthProvider = ({ children }) => {
     googleLogin,
     logOut,
     user,
+    githubLogin,
   };
   return (
     <DataProvider.Provider value={functions}>{children}</DataProvider.Provider>
