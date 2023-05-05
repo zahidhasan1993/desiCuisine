@@ -28,9 +28,10 @@ const ChefRecipeCard = ({ data }) => {
         <h3 className="text-xl underline font-bold mt-4">Recipe :</h3>
 
         <p>{cookingMethod}</p>
+        <p>Ratings : <span className="text-red-700">{rating}</span></p>
 
         <div className="card-actions justify-end">
-          <button onClick={notify} className="btn btn-error" disabled={disabled}>
+          <button onClick={notify} className="btn btn-error text-white" disabled={disabled}>
             Favorite
           </button>
         </div>
